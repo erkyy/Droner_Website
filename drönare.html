@@ -5,6 +5,7 @@
     <link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
     
 <body>
@@ -25,9 +26,67 @@
                     </form>
                 </div>
                 <!--User Menu med Cart o Login; Ej implementerat funktioner-->
-                <div id="user-menu">
-                    <li><a href="cart.html">Varukorg</a></li>
-                    <li><a href="#toLogIn">Logga in</a></li>
+                                <div id="user-menu">
+                    <li>
+                        <!-- Trigger/Open The Modal -->
+                        <button id="myBtn" class="userMenuBtn">Cart <i class="fa fa-shopping-cart"></i> </button>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <span class="close">&times;</span>
+                                    <h2 style="color:white";>CART </h2>
+                                </div>
+                                <div class="modal-body">
+                                    <!------------------- SHOPPING CART LIST START ------------------------------>
+                                    <div id="left"> <p> ITEM </p>
+                                        
+                                        
+                                        
+                                    <p> aa 1 </p>
+                                    <p> bb 2 </p>
+                                    <p> cc 3 </p>
+                                    <p> cc 4 </p>
+                                    
+                                    <br>
+                                    </div>
+                                    <div id="right"> <p> PRICE </p>
+                                    
+                                    <p> 200 kr </p>
+                                    <p> 400 kr </p>
+                                    <p> 300 kr </p>
+                                    <p> 450 kr </p>
+                                        
+                                    
+                                    <br>
+                                    </div>
+                                    <div id="center"> <p> QUANTITY </p>
+                                    
+                                    <p> 1 </p>
+                                    <p> 1 </p>
+                                    <p> 1 </p>
+                                    <p> 1 </p>
+                                          
+                                    
+                                    <br>
+                                    </div>
+                                    <!------------------- SHOPPING CART LIST END ------------------------------>
+                                    <hr>
+                                    
+                                    <center><p> <b> Total: </b> <span> 599 </span> kr </p></center>
+                                    
+                                    
+                                    
+                                    <center><a href="checkout.html" class="button">Checkout</a></center>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><button class="userMenuBtn">Login <i style="font-size:24px" class="fa">&#xf090;</i></button></li>
                 </div>
             </div>
         </div>

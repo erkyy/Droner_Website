@@ -427,7 +427,11 @@ nav a:hover {
 }
 
 
-/*---------------------------------- Modal Start --------------------------------------------------*/
+/*---------------------------------- Modal och Liknande Start --------------------------------------------------*/
+
+.cartItemImg {
+    max-height: 100px;
+}
 
 .userMenuBtn {
     font-size: 25px;
@@ -448,7 +452,9 @@ nav a:hover {
 }
 
 a.button {
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
@@ -461,6 +467,10 @@ a.button {
     width: 50%;
     
 }
+
+#left{float:left;width:100px;}
+#right{float:right;width:100px;}
+#center{margin:0 auto;width:100px;}
 
 /* The Modal (background) */
 .modal {
