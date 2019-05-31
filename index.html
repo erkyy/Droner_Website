@@ -1,0 +1,275 @@
+<html>
+
+<head>
+    <title> Droner - En bra hemsida</title>
+    <link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+    
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <!--==main header==-->
+            <div id="main-header">
+                <!--logo-->
+                <div id="logo">
+                    <span id="ist">droner</span>
+                </div>
+                <!--==search area==-->
+                <div id="search">
+                    <form action="">
+                        <input class="search-area" type="text" name="text" placeholder="Sök här">
+                        <input class="search-btn" type="submit" name="submit" value="Sök">
+
+                    </form>
+                </div>
+                <!--User Menu med Cart o Login; Ej implementerat funktioner-->
+                <div id="user-menu">
+                    <li>
+                        <!-- Trigger/Open The Modal -->
+                        <button id="myBtn" class="userMenuBtn">Cart <i class="fa fa-shopping-cart"></i> </button>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <span class="close">&times;</span>
+                                    <h2 style="color:white";>CART </h2>
+                                </div>
+                                <div class="modal-body">
+                                    <p>ITEM 1</p>
+                                    <p>ITEM 2</p>
+                                    <center><a href="support.html" class="button">Checkout</a></center>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><button class="userMenuBtn">Login <i style="font-size:24px" class="fa">&#xf090;</i></button></li>
+                </div>
+            </div>
+        </div>
+        <!--Navigation Bar: För att navigera mellan sidor.--->
+        <div id="navigation">
+            <a href="#" class="menu-togglr"><i class="fa fa-bars"></i></a>
+            <nav id="mainav">
+                <a href="index.html">Hem</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Shop 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="drönare.html">Drönare</a>
+                        <a href="accessoarer.html">Accessoarer</a>
+                        <a href="guider.html">Guider</a>
+    </div>
+  </div> 
+                <a href="faq.html">FAQ</a>
+                <a href="support.html">Support</a>
+            </nav>
+        </div>
+        <!--============home-slider==-->
+        <div id="slider">
+            <ul class="bxslider">
+                <center> <li><img src="images/img1.jpg"></li> </center>
+                <center> <li><img src="images/img2.jpg"></li> </center>
+                <center> <li><img src="images/img3.jpg"></li> </center>
+            </ul>
+        </div>
+        <!----=KATEGORIER=----->
+        <div class="container">
+            <div id="heading-block">
+                <h2>Kategorier</h2>
+            </div>
+            <!---Första catbox (kategori box)--->
+            
+                <div class="catbox">
+                   <a href="drönare.html"> <!-- Destination. -->
+                    <img src="images/cat1.jpg" alt="Drones">
+                    <span>Drönare</span>
+                    </a>
+                </div>
+            <!---Andra catbox--->
+            
+                <div class="catbox">
+                   <a href="accessoarer.html">
+                    <img src="images/cat2.jpg" alt="accessories">
+                    <span>Accessoarer</span>
+                    </a>
+                </div>
+            
+            <!---Tredje catbox--->
+            
+                <div class="catbox">
+                   <a href="guider.html">
+                    <img src="images/cat3.jpg" alt="guides">
+                    <span>Guider</span>
+                    </a>
+                </div>
+           
+            <!---PRODUKTER--->
+
+            
+            <div id="heading-block">
+                <h2>Bästsäljande produkter</h2>
+            </div>
+
+            <div class="prod-container">
+                
+                <!--1 product-->
+                <div class="prod-box">
+                    <img src="images/pro1.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>DJI Mavic Pro</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 10 299 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--2 product-->
+                <div class="prod-box">
+                    <img src="images/pro2.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>DJI Mavic Air - Flame Red</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 7 999 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--3 product-->
+                <div class="prod-box">
+                    <img src="images/pro3.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>DJI Mavic Pro 2</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 14 999 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--4 product-->
+                <div class="prod-box">
+                    <img src="images/pro4.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>DJI Mavic 2 Zoom</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 11 199 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--5 product-->
+                <div class="prod-box">
+                    <img src="images/pro5.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>Ryze Tello</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 1 299 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--6 product-->
+                <div class="prod-box">
+                    <img src="images/pro6.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>Landing Pad</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 99 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--7 product-->
+                <div class="prod-box">
+                    <img src="images/pro7.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>Drone Bag</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 699 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--8 product-->
+                <div class="prod-box">
+                    <img src="images/pro8.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>Batteriladdare</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 499 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--9 product-->
+                <div class="prod-box">
+                    <img src="images/pro9.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>ND Filters för drönare x3</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 399 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                <!--10 product-->
+                <div class="prod-box">
+                    <img src="images/pro10.jpg" alt="man suit">
+                    <div class="prod-trans">
+                        <div class="prod-feature">
+                            <p>DJI Kontroller</p>
+                            <p style="color:#fff;font-weight:bold;">Pris: 599 kr</p>
+                            <input type="button" value="Lägg i varukorg">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div> <!-- End wrapper-->
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/my.js"></script>
+    
+    <!-- MODAL JAVASCRIPT-->
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
