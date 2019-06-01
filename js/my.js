@@ -39,8 +39,8 @@ $(document).ready(function () {
     
     // Count number of times each product is in the cart
     var count = 0;
-    for(var i = 0; i < prodArray.length; ++i){
-      if(prodArray[i] == prodName)
+    for(var i = 0; i < cartArray.length; ++i){
+      if(cartArray[i] == prodSku)
         count++;
     }
     console.log(count);
