@@ -428,7 +428,15 @@ nav a:hover {
 }
 
 
-/*---------------------------------- Modal och Liknande Start --------------------------------------------------*/
+/*---------------------------------- Modal och Cart Start --------------------------------------------------*/
+
+table {
+    width:100%;
+    text-align: center;
+}
+th {
+    padding: 16px 2px;
+}
 
 .cartItemImg {
     max-height: 100px;
@@ -467,6 +475,12 @@ a.button {
     padding: 12px 6px;
     width: 50%;
     
+}
+
+a.button:hover {
+    transition: .2s;
+    background-color: #800000;
+    color: blue;
 }
 
 #left{float:left;width: 100px;}
