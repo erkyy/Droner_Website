@@ -5,10 +5,10 @@ $(document).ready(function () {
     var cartArray = [];
     var prisArray = [];
     var prodArray = [];
+    var antalArray = [];
     var cost;
     var prodName;
     var prodSku;
-    
     
   // SLIDER START-----------------------------------------------------------------
   
@@ -37,16 +37,16 @@ $(document).ready(function () {
       cost = $(this).data('pris');
       prodName = $(this).data('prod');
 
+      
+      
       // Push items to arrays
       cartArray.push(prodSku);
       prisArray.push(cost);
       prodArray.push(prodName);
 
-      // Console table results
-      console.table(cartArray);
-      console.table(prisArray);
-      console.table(prodArray);
-
+      console.log(prisArray);
+      console.log(prodArray);
+      
       // Add number of items in cart to cart button
       $('#myBtn .cart-count').html(cartArray.length);
 
@@ -57,12 +57,33 @@ $(document).ready(function () {
               count++;
       }
       
-      console.log(count);
       
+      //RÄKNA UT SUMMAN
+    
+    var sum = 0
+    
+    for(var i = 0; i < prisArray.length; i++) {
+
+        sum += prisArray[i]
+    }
+    
+    //Display till sidan
+      document.getElementById("totalSum").innerHTML = sum;
+      document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
+      
+      //Skapa ny tablerow för varje ny produkt
+    var table = document.getElementById("cartTable");
+    var row = cartTable.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = prodArray[0];
+    cell2.innerHTML = "";
+    cell3.innerHTML = prisArray[0] + " kr";
+      
+    //CART END------------------------------------------------------------------
   });  
    
-   
     
-    //CART END------------------------------------------------------------------
   //END  
 });
