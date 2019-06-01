@@ -438,8 +438,8 @@ th {
     padding: 16px 2px;
 }
 
-.cartItemImg {
-    max-height: 100px;
+td {
+    padding: 6px 0px;
 }
 
 .userMenuBtn {

@@ -1,5 +1,11 @@
 $(document).ready(function () {
     
+    function myFunction() {
+        
+        console.log("SAHDJSHAKDAH WORK!!!");
+        
+    }
+    
     // Variables
  
     var cartArray = [];
@@ -9,6 +15,7 @@ $(document).ready(function () {
     var cost;
     var prodName;
     var prodSku;
+    var sum = 0;
     
   // SLIDER START-----------------------------------------------------------------
   
@@ -21,13 +28,9 @@ $(document).ready(function () {
       $(this).toggleClass('active');
   });
   
-    //SLIDER END----------------------------------------------------------------
-      
+    //SLIDER END----------------------------------------------------------------    
     
-    
-    
-    
-    
+    document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
     
     //CART START------------------------------------------------------------------
   $('.prod-btn').click(function(){
@@ -60,8 +63,6 @@ $(document).ready(function () {
       
       //RÄKNA UT SUMMAN
     
-    var sum = 0
-    
     for(var i = 0; i < prisArray.length; i++) {
 
         sum += prisArray[i]
@@ -71,15 +72,28 @@ $(document).ready(function () {
       document.getElementById("totalSum").innerHTML = sum;
       document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
       
+      console.log(totalSumPlusFrakt);
+      
+      //Spara sum till checkout
+      
+      
       //Skapa ny tablerow för varje ny produkt
     var table = document.getElementById("cartTable");
     var row = cartTable.insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = prodArray[0];
-    cell2.innerHTML = "";
-    cell3.innerHTML = prisArray[0] + " kr";
+    var cell4 = row.insertCell(3);
+      
+    for(var i=0;i<prodArray.length;i++) {
+        cell1.innerHTML = prodArray[i];
+        cell2.innerHTML = "1"
+        cell4.innerHTML = '<button id="btn" name="btn"><font size="5"> &times; </font></button>';
+    }
+      
+    for(var i=0;i<prisArray.length;i++) {
+        cell3.innerHTML = prisArray[i] + " kr";
+    }
       
     //CART END------------------------------------------------------------------
   });  

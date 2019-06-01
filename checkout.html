@@ -45,43 +45,28 @@
                                 </div>
                                 <div class="modal-body">
                                     <!------------------- SHOPPING CART LIST START ------------------------------>
-                                    <div id="left"> <p> ITEM </p>
-                                        
-                                        
-                                        
-                                    <p> aa 1 </p>
-                                    <p> bb 2 </p>
-                                    <p> cc 3 </p>
-                                    <p> cc 4 </p>
-                                    
-                                    <br>
-                                    </div>
-                                    <div id="right"> <p> PRICE </p>
-                                    
-                                    <p> 200 kr </p>
-                                    <p> 400 kr </p>
-                                    <p> 300 kr </p>
-                                    <p> 450 kr </p>
-                                        
-                                    
-                                    <br>
-                                    </div>
-                                    <div id="center"> <p> QUANTITY </p>
-                                    
-                                    <p> 1 </p>
-                                    <p> 1 </p>
-                                    <p> 1 </p>
-                                    <p> 1 </p>
-                                          
-                                    
-                                    <br>
-                                    </div>
+                                    <table id="cartTable">
+                                            <thead style="font-size: 30px;">
+                                                <tr>
+                                                    <th><u>Vara</u></th>
+                                                    <th><u>Antal</u></th>
+                                                    <th><u>Pris</u></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cartItems">
+                                                <tr style="width:100%;"> <!-- One of these per item-->
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     <!------------------- SHOPPING CART LIST END ------------------------------>
+                                    <p>&nbsp;</p>
                                     <hr>
-                                    
-                                    <center><p> <b> Total: </b> <span> 599 </span> kr </p></center>
-                                    
-                                    
+                                    <center> <p style="font-size: 16px"> <b> Subtotal: </b> <span id="totalSum"> </span> kr </p>  </center>
+                                    <center> <p style="font-size: 16px"> <b> Frakt: </b> 99 kr </p>  </center>
+                                    <center><p style="font-size: 36px;"> <b> Total: </b> <span id="totalSumPlusFrakt"> </span> kr </p></center>
                                     
                                     <center><a href="checkout.html" class="button">Checkout</a></center>
                                 </div>
@@ -121,7 +106,12 @@
         
         <!-- Img end-->
         
+        
+        
         <div class="row">
+            <div id="heading-block" style="margin-left: 50px;">
+                <center><p style="font-size: 36px;margin-top:10px;"> <b> Du ska betala: </b> <span id="totalSumPlusFrakt"> </span> kr </p></center>
+            </div>
   <div class="col-75">
     <div class="container">
       <form action="/action_page.php">
@@ -189,14 +179,12 @@
   </div>
 </div>
         
-
     </div> <!-- End wrapper-->
     
     <script>
         function betala() {
             alert("Tack för ditt köp!");
         }
-        
     </script>
     
     <script src="js/jquery.js"></script>
