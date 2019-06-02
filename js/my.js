@@ -1,10 +1,6 @@
 $(document).ready(function () {
     
-    function myFunction() {
-        
-        console.log("SAHDJSHAKDAH WORK!!!");
-        
-    }
+    
     
     // Variables
  
@@ -14,8 +10,7 @@ $(document).ready(function () {
     var antalArray = [];
     var cost;
     var prodName;
-    var prodSku;
-    var sum = 0;
+    var prodSku
     
   // SLIDER START-----------------------------------------------------------------
   
@@ -30,7 +25,6 @@ $(document).ready(function () {
   
     //SLIDER END----------------------------------------------------------------    
     
-    document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
     
     //CART START------------------------------------------------------------------
   $('.prod-btn').click(function(){
@@ -47,8 +41,7 @@ $(document).ready(function () {
       prisArray.push(cost);
       prodArray.push(prodName);
 
-      console.log(prisArray);
-      console.log(prodArray);
+
       
       // Add number of items in cart to cart button
       $('#myBtn .cart-count').html(cartArray.length);
@@ -63,41 +56,50 @@ $(document).ready(function () {
       
       //RÄKNA UT SUMMAN
     
-    for(var i = 0; i < prisArray.length; i++) {
-
-        sum += prisArray[i]
-    }
-    
+      var sum = 0;
+      $.each(prisArray,function() {
+          sum += this;
+      });
+      
     //Display till sidan
       document.getElementById("totalSum").innerHTML = sum;
       document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
       
-      console.log(totalSumPlusFrakt);
       
-      //Spara sum till checkout
       
+      //Save sum variable for use later
+      if (typeof(Storage) !== "undefined") {
+          // Store
+          localStorage.setItem("sumStr", sum);
+          // Retrieve
+          document.getElementById("sumToPayID").innerHTML = localStorage.getItem("sumStr");
+          console.log(sum);
+      } else {
+          document.getElementById("sumToPayID").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+
       
       //Skapa ny tablerow för varje ny produkt
     var table = document.getElementById("cartTable");
     var row = cartTable.insertRow(-1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
+    var cell1 = row.insertCell(0); //vara
+    var cell2 = row.insertCell(1); //antal
+    var cell3 = row.insertCell(2); //pris
+    var cell4 = row.insertCell(3); //ta bort
       
-    for(var i=0;i<prodArray.length;i++) {
-        cell1.innerHTML = prodArray[i];
-        cell2.innerHTML = "1"
-        cell4.innerHTML = '<button id="btn" name="btn"><font size="5"> &times; </font></button>';
+    for(var i=0; i<cartArray.length; i++) {
+        cell1.innerHTML = prodArray[i]; //Produkt
+        cell2.innerHTML = 1; //Antal
+        cell4.innerHTML = '<button class="xBtn" id="btn" name="btn" onclick="deleteRow(this);"><font size="5"> &times; </font></button>'; //Ta bort
     }
       
     for(var i=0;i<prisArray.length;i++) {
-        cell3.innerHTML = prisArray[i] + " kr";
+        cell3.innerHTML = prisArray[i] + " kr"; //Pris
     }
       
     //CART END------------------------------------------------------------------
   });  
    
     
-  //END  
+  //END READY
 });

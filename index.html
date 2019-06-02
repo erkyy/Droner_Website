@@ -63,7 +63,7 @@
                                     <center> <p style="font-size: 16px"> <b> Subtotal: </b> <span id="totalSum"> </span> kr </p>  </center>
                                     <center> <p style="font-size: 16px"> <b> Frakt: </b> 99 kr </p>  </center>
                                     <center><p style="font-size: 36px;"> <b> Total: </b> <span id="totalSumPlusFrakt"> </span> kr </p></center>
-                                    
+                                    <hr>
                                     <center><a href="checkout.html" class="button">
                                         
                                         Checkout</a>
@@ -265,9 +265,16 @@
     <script src="js/jquery.bxslider.min.js"></script>
     <script src="js/my.js"></script>
     
-    <!-- MODAL JAVASCRIPT-->
+    
     <script>
         
+        //Ta bort tableRow.
+      function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("cartTable").deleteRow(i);
+        }
+        
+        // MODAL JAVASCRIPT
         // Get the modal
         var modal = document.getElementById("myModal");
 

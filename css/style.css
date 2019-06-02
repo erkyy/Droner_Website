@@ -439,7 +439,14 @@ th {
 }
 
 td {
-    padding: 6px 0px;
+    padding: 4px 0px;
+    border-bottom: 1px solid #111111;
+
+}
+
+xBtn {
+    color: aqua;
+    background-color: green;
 }
 
 .userMenuBtn {
