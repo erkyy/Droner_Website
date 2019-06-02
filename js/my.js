@@ -1,3 +1,10 @@
+//Ta bort tableRow.
+      function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("cartTable").deleteRow(i);
+          
+        }
+
 $(document).ready(function () {
     
     
@@ -27,6 +34,8 @@ $(document).ready(function () {
     
     
     //CART START------------------------------------------------------------------
+    
+    
   $('.prod-btn').click(function(){
 
       // Data variables for sku, price, and product name
@@ -34,14 +43,12 @@ $(document).ready(function () {
       cost = $(this).data('pris');
       prodName = $(this).data('prod');
 
-      
-      
       // Push items to arrays
       cartArray.push(prodSku);
       prisArray.push(cost);
       prodArray.push(prodName);
 
-
+      console.table(prisArray);
       
       // Add number of items in cart to cart button
       $('#myBtn .cart-count').html(cartArray.length);
@@ -67,17 +74,13 @@ $(document).ready(function () {
       
       
       
-      //Save sum variable for use later
+      //Spara sum variabel, use later
       if (typeof(Storage) !== "undefined") {
           // Store
-          localStorage.setItem("sumStr", sum);
-          // Retrieve
-          document.getElementById("sumToPayID").innerHTML = localStorage.getItem("sumStr");
-          console.log(sum);
+          localStorage.setItem("sumStr", sum + 99);
       } else {
           document.getElementById("sumToPayID").innerHTML = "Sorry, your browser does not support Web Storage...";
       }
-
       
       //Skapa ny tablerow för varje ny produkt
     var table = document.getElementById("cartTable");
