@@ -6,20 +6,23 @@ function deleteRow(r) {
 
 $(document).ready(function () {
     
-    
-    
-    // Variables
- 
-    var cartArray = [];
-    var prisArray = [];
-    var prodArray = [];
-    var antalArray = [];
-    var cost;
-    var prodName;
-    var prodSku;
-    var prodPris;
-    var sum = 0;
-    var NewSum;
+  console.log(localStorage);
+      
+  // Variables
+
+  var cartArray = [];
+  var prisArray = [];
+  var prodArray = [];
+  var antalArray = [];
+  var cost;
+  var prodName;
+  var prodSku;
+  var prodPris;
+  var sum = 0;
+  var cartTotal = 0;
+  var sumStorage = localStorage.getItem('sum');
+  
+  $('#sumToPayID').html(sumStorage);
     
   // SLIDER START-----------------------------------------------------------------
   
@@ -32,11 +35,31 @@ $(document).ready(function () {
       $(this).toggleClass('active');
   });
   
-    //SLIDER END----------------------------------------------------------------    
-    
-    
-    //CART START------------------------------------------------------------------
-    
+  //SLIDER END----------------------------------------------------------------    
+  
+  
+  //CART START------------------------------------------------------------------
+  
+  // BECAREFUL WITH THIS. IT CAN FILL UP YOUR CACHE QUICKLY
+  // Look at this first answer for some guidance on how to edit your storage: https://stackoverflow.com/questions/16083919/push-json-objects-to-array-in-localstorage
+  // You can start using this to serve up the cart data instead of loading it with the for loop at the bottom.
+/*
+  var a = [];
+  a.push(JSON.parse(localStorage.getItem('session')));
+  localStorage.setItem('session', JSON.stringify(a));
+*/
+
+/*
+  function SaveDataToLocalStorage(data){
+    var a = [];
+    // Parse the serialized data back into an aray of objects
+    a = JSON.parse(localStorage.getItem('session'));
+    // Push the new data (whether it be an object or anything else) onto the array
+    a.push(data);
+    // Re-serialize the array back into a string and store it in localStorage
+    localStorage.setItem('session', JSON.stringify(a));
+  }
+*/
     
   $('.prod-btn').click(function(){
 
@@ -74,21 +97,15 @@ $(document).ready(function () {
       console.log(occurrences);
       
       //RÄKNA UT SUMMAN
-      sum = prisArray.reduce((a, b) => a + b, 0)
-      
+      sum = prisArray.reduce((a, b) => a + b, 0);
+      //SaveDataToLocalStorage(sum + 99);
+      cartTotal = sum + 99;
+      localStorage.setItem('sum', cartTotal);
+      console.log(localStorage); 
+            
       //Display till sidan
       document.getElementById("totalSum").innerHTML = sum;
       document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
-      
-      // BECAREFUL WITH THIS. IT CAN FILL UP YOUR CACHE QUICKLY
-      // Look at this first answer for some guidance on how to edit your storage: https://stackoverflow.com/questions/16083919/push-json-objects-to-array-in-localstorage
-      // You can start using this to serve up the cart data instead of loading it with the for loop at the bottom.
-/*
-      var a = cartArray;
-      a.push(JSON.parse(localStorage.getItem('session')));
-      localStorage.setItem('session', JSON.stringify(a));
-      console.log(localStorage);
-*/
       
       //Skapa ny tablerow för varje ny produkt
       var table = document.getElementById("cartTable");
@@ -111,9 +128,12 @@ $(document).ready(function () {
   $(document).on('click', '.xBtn', function(){
     prodPris = parseInt($(this).data('price'));
     currentSum = parseInt(sum); 
-    sum = currentSum - prodPris; 
+    sum = currentSum - prodPris;
+    cartTotal = sum + 99;
     document.getElementById("totalSum").innerHTML = sum;
     document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
+    localStorage.setItem('sum', cartTotal);
+    console.log(localStorage);
   });  
     
   //END READY
