@@ -1,9 +1,8 @@
 //Ta bort tableRow.
-      function deleteRow(r) {
-            var i = r.parentNode.parentNode.rowIndex;
-            document.getElementById("cartTable").deleteRow(i);
-          
-        }
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("cartTable").deleteRow(i);
+}
 
 $(document).ready(function () {
     
@@ -17,7 +16,10 @@ $(document).ready(function () {
     var antalArray = [];
     var cost;
     var prodName;
-    var prodSku
+    var prodSku;
+    var prodPris;
+    var sum = 0;
+    var NewSum;
     
   // SLIDER START-----------------------------------------------------------------
   
@@ -44,65 +46,75 @@ $(document).ready(function () {
       prodName = $(this).data('prod');
 
       // Push items to arrays
-      cartArray.push(prodSku);
+      cartArray.push([cost, prodSku, prodName]);
       prisArray.push(cost);
-      prodArray.push(prodName);
+      //prodArray.push(prodName);
 
       console.table(prisArray);
+      console.table(cartArray);
       
       // Add number of items in cart to cart button
       $('#myBtn .cart-count').html(cartArray.length);
 
       // Count number of times each product is in the cart
-      var count = 0;
-      for(var i = 0; i < prodArray.length; ++i){
-          if(prodArray[i] == prodName)
-              count++;
+/*
+      var count = { };
+      for (var i = 0, j = prodArray.length; i < j; i++) {
+         count[prodArray[i]] = (count[prodArray[i]] || 0) + 1;
+      }
+*/
+      
+      // Group like products in the cart
+      var occurrences = { };
+      for (var i = 0, j = cartArray.length; i < j; i++) {
+         occurrences[cartArray[i]] = (occurrences[cartArray[i]] || 0) + 1;
       }
       
+      //console.log(count);
+      console.log(occurrences);
       
       //RÄKNA UT SUMMAN
-    
-      var sum = 0;
-      $.each(prisArray,function() {
-          sum += this;
-      });
+      sum = prisArray.reduce((a, b) => a + b, 0)
       
-    //Display till sidan
+      //Display till sidan
       document.getElementById("totalSum").innerHTML = sum;
       document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
       
-      
-      
-      //Spara sum variabel, use later
-      if (typeof(Storage) !== "undefined") {
-          // Store
-          localStorage.setItem("sumStr", sum + 99);
-      } else {
-          document.getElementById("sumToPayID").innerHTML = "Sorry, your browser does not support Web Storage...";
-      }
+      // BECAREFUL WITH THIS. IT CAN FILL UP YOUR CACHE QUICKLY
+      // Look at this first answer for some guidance on how to edit your storage: https://stackoverflow.com/questions/16083919/push-json-objects-to-array-in-localstorage
+      // You can start using this to serve up the cart data instead of loading it with the for loop at the bottom.
+/*
+      var a = cartArray;
+      a.push(JSON.parse(localStorage.getItem('session')));
+      localStorage.setItem('session', JSON.stringify(a));
+      console.log(localStorage);
+*/
       
       //Skapa ny tablerow för varje ny produkt
-    var table = document.getElementById("cartTable");
-    var row = cartTable.insertRow(-1);
-    var cell1 = row.insertCell(0); //vara
-    var cell2 = row.insertCell(1); //antal
-    var cell3 = row.insertCell(2); //pris
-    var cell4 = row.insertCell(3); //ta bort
-      
-    for(var i=0; i<cartArray.length; i++) {
-        cell1.innerHTML = prodArray[i]; //Produkt
+      var table = document.getElementById("cartTable");
+      var row = cartTable.insertRow(-1);
+      var cell1 = row.insertCell(0); //vara
+      var cell2 = row.insertCell(1); //antal
+      var cell3 = row.insertCell(2); //pris
+      var cell4 = row.insertCell(3); //ta bort
+        
+      for(var i=0; i<cartArray.length; i++) {
+        cell1.innerHTML = cartArray[i][2]; //Produkt
         cell2.innerHTML = 1; //Antal
-        cell4.innerHTML = '<button class="xBtn" id="btn" name="btn" onclick="deleteRow(this);"><font size="5"> &times; </font></button>'; //Ta bort
-    }
-      
-    for(var i=0;i<prisArray.length;i++) {
-        cell3.innerHTML = prisArray[i] + " kr"; //Pris
-    }
+        cell4.innerHTML = '<button class="xBtn" name="btn" data-price="' + cartArray[i][0] + '" onclick="deleteRow(this);"><font size="5"> &times; </font></button>'; //Ta bort
+        cell3.innerHTML = cartArray[i][0] + " kr"; //Pris
+      }
       
     //CART END------------------------------------------------------------------
   });  
-   
+
+  $(document).on('click', '.xBtn', function(){
+    prodPris = parseInt($(this).data('price'));
+    currentSum = parseInt(sum); 
+    sum = currentSum - prodPris; 
+    document.getElementById("totalSum").innerHTML = sum;
+    document.getElementById("totalSumPlusFrakt").innerHTML = (sum + 99);
+  });  
     
   //END READY
 });
